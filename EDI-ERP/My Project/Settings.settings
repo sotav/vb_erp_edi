@@ -1,0 +1,39 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="file_path" Type="System.String" Scope="User">
+      <Value Profile="(Default)">c:\data\EDI1\</Value>
+    </Setting>
+    <Setting Name="file_path1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">c:\data\EDI2\</Value>
+    </Setting>
+    <Setting Name="file_path2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">c:\data\EDI3\</Value>
+    </Setting>
+    <Setting Name="debug" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="user_id" Type="System.String" Scope="User">
+      <Value Profile="(Default)">'drtire'</Value>
+    </Setting>
+    <Setting Name="con_string2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Server=212.24.101.88;Port=5432;Userid=odoo;Database=dr-tire-test;password=drt1r3p@$$;Pooling=true;MinPoolSize=1;MaxPoolSize=20;Timeout=15;SslMode=Disable</Value>
+    </Setting>
+    <Setting Name="company_id" Type="System.String" Scope="User">
+      <Value Profile="(Default)">'1','2','3','4','5','6'</Value>
+    </Setting>
+    <Setting Name="partner_id" Type="System.String" Scope="User">
+      <Value Profile="(Default)">'21'</Value>
+    </Setting>
+    <Setting Name="invoice_ids" Type="System.String" Scope="User">
+      <Value Profile="(Default)">'1'</Value>
+    </Setting>
+    <Setting Name="con_string1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Server=212.24.101.88;Port=5432;Userid=odoo;Database=dr-tire-test;password=drt1r3p@$$;Pooling=true;MinPoolSize=1;MaxPoolSize=20;Timeout=15;SslMode=Disable</Value>
+    </Setting>
+    <Setting Name="admin_pass" Type="System.String" Scope="User">
+      <Value Profile="(Default)">lion25025code</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
