@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EDI_ERP.exe" size="1492912">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EDI_ERP.exe" size="1492400">
       <assemblyIdentity name="EDI_ERP" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>JN+WKf/EpA5uOqdkuwUO+62tpz73wky34MgFsnT1S+E=</dsig:DigestValue>
+        <dsig:DigestValue>vdl8NXpDvthWUFTl/1d14Ee58c+KNidmx8SVOKV8qm4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

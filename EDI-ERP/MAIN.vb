@@ -4,7 +4,6 @@ Imports System
 Imports System.Web
 Imports Npgsql
 Imports NpgsqlTypes
-'Imports NpgsqlRowUpdatedEventArgs
 Imports System.Windows.Forms
 Imports System.Xml.Serialization
 Imports System.IO
@@ -20,11 +19,6 @@ Imports NPOI.HSSF.UserModel
 Imports NPOI.SS.UserModel
 Imports System.Reflection
 
-
-
-
-
-
 Public Class MAIN
     Public xmld As XmlDocument
     Public nodelist As XmlNodeList
@@ -32,14 +26,10 @@ Public Class MAIN
     Dim newTable As New DataTable
     Dim ds9001 As New DataSet
     Dim bs1 As New BindingSource
-
     Dim flag1 As Boolean = False
-
     Dim DSq As New DataSet("queerys")
-
     Dim bs As New BindingSource
     Dim editFlag As Boolean = False
-
     Dim deflection_dataset As New DataSet
     Dim ds As New DataSet
     Dim dsM As New DataSet
@@ -55,15 +45,8 @@ Public Class MAIN
         Dim buildNumber As Integer = My.Application.Info.Version.Build
         Dim majorRevision As Integer = My.Application.Info.Version.MajorRevision
         Dim minorRevision As Integer = My.Application.Info.Version.MinorRevision
-
         versionNumber = Assembly.GetExecutingAssembly().GetName().Version
-
         Me.Text = Me.Text & " " & versionNumber.ToString
-
-
-
-
-
         file_save_path.Text = My.Settings.file_path.ToString
         file_save_path1.Text = My.Settings.file_path1.ToString
         file_save_path2.Text = My.Settings.file_path2.ToString
@@ -75,13 +58,6 @@ Public Class MAIN
         invoice_ids.Text = My.Settings.invoice_ids.ToString
         partner_id_txt.Text = My.Settings.partner_id.ToString
         admin_pass_txt.Text = My.Settings.admin_pass.ToString
-
-
-
-        ' load_partners()
-        ' load_companies()
-
-
     End Sub
 
     Private Sub search_btn_Click(sender As Object, e As EventArgs) Handles search_btn.Click
@@ -106,8 +82,6 @@ Public Class MAIN
 
 
     Public Sub getdata()
-        ' dgv_sel_invoices.Rows.Clear()
-        ' dgv_sel_invoices.Columns.Clear()
 
         dsM.Clear()
         dgvM.DataSource = Nothing
@@ -119,12 +93,12 @@ Public Class MAIN
         Dim sdaM As NpgsqlDataAdapter
         ds = New DataSet
         Try
-            pgConnectionStringM = con_string1.Text '"Server=192.168.1.147;Port=5432;Userid=odoo8;Database=LOUMIDIS;password=2772398;Protocol=3;SSL=false;Pooling=true;MinPoolSize=1;MaxPoolSize=20;Encoding=UNICODE;Timeout=15;SslMode=Disable" '
+            pgConnectionStringM = con_string1.Text
             pgConnectionM.ConnectionString = pgConnectionStringM
             pgConnectionM.Open()
         Catch ex As Exception
             If pgConnectionM.State <> ConnectionState.Open Then
-                pgConnectionStringM = con_string2.Text '"Server=192.168.1.147;Port=5432;Userid=odoo8;Database=LOUMIDIS;password=2772398;Protocol=3;SSL=false;Pooling=true;MinPoolSize=1;MaxPoolSize=20;Encoding=UNICODE;Timeout=15;SslMode=Disable" '
+                pgConnectionStringM = con_string2.Text
                 pgConnectionM.ConnectionString = pgConnectionStringM
                 pgConnectionM.Open()
             Else
@@ -220,13 +194,11 @@ Public Class MAIN
 
             If debug.CheckState = CheckState.Checked Then
                 For i = 0 To dgvM.Columns.Count - 1
-                    'dgvM.Columns(i).Visible = False
                     dgvM.Columns(i).HeaderText = dgvM.Columns(i).HeaderText & "_" & i
                 Next
             Else
                 For i = 0 To dgvM.Columns.Count - 1
                     dgvM.Columns(i).Visible = False
-                    'dgvM.Columns(i).HeaderText = dgvM.Columns(i).HeaderText & "_" & i
                 Next
             End If
 
@@ -258,7 +230,7 @@ Public Class MAIN
             dgvM.Refresh()
 
         Else
-            MsgBox("pgConnectionM did not open successfully.") ' context.Response.Write("pgConnection did not open successfully.")
+            MsgBox("pgConnectionM did not open successfully.") 
         End If
         pgConnectionM.Close()
     End Sub
@@ -274,12 +246,12 @@ Public Class MAIN
         Dim sdaD As NpgsqlDataAdapter
         ds = New DataSet
         Try
-            pgConnectionStringD = con_string1.Text '"Server=192.168.1.147;Port=5432;Userid=odoo8;Database=LOUMIDIS;password=2772398;Protocol=3;SSL=false;Pooling=true;MinPoolSize=1;MaxPoolSize=20;Encoding=UNICODE;Timeout=15;SslMode=Disable" '
+            pgConnectionStringD = con_string1.Text
             pgConnectionD.ConnectionString = pgConnectionStringD
             pgConnectionD.Open()
         Catch ex As Exception
             If pgConnectionD.State <> ConnectionState.Open Then
-                pgConnectionStringD = con_string2.Text '"Server=192.168.1.147;Port=5432;Userid=odoo8;Database=LOUMIDIS;password=2772398;Protocol=3;SSL=false;Pooling=true;MinPoolSize=1;MaxPoolSize=20;Encoding=UNICODE;Timeout=15;SslMode=Disable" '
+                pgConnectionStringD = con_string2.Text
                 pgConnectionD.ConnectionString = pgConnectionStringD
                 pgConnectionD.Open()
             Else
@@ -351,8 +323,6 @@ Public Class MAIN
             Dim dtD As DataTable
             dtD = dsD.Tables(0)
             dgvD.DataSource = dtD
-
-
             If debug.CheckState = CheckState.Checked Then
                 For i = 0 To dgvD.Columns.Count - 1
                     dgvD.Columns(i).HeaderText = dgvD.Columns(i).HeaderText & "_" & i
@@ -360,7 +330,6 @@ Public Class MAIN
             Else
                 For i = 0 To dgvD.Columns.Count - 1
                     dgvD.Columns(i).Visible = False
-                    'dgvM.Columns(i).HeaderText = dgvM.Columns(i).HeaderText & "_" & i
                 Next
             End If
             With dgvD
@@ -381,32 +350,15 @@ Public Class MAIN
                 .Columns(17).Visible = True
                 .Columns(17).HeaderText = "ΠΙΝΑΚΙΔΑ"
                 .Columns(17).Width = 100
-
-
-
             End With
-
             dgvM.ResumeLayout()
             dgvM.Refresh()
-
-
             dgvD.ResumeLayout()
             dgvD.Refresh()
-
-
-
-
         Else
-            MsgBox("pgConnectionD did not open successfully.") ' context.Response.Write("pgConnection did not open successfully.")
+            MsgBox("pgConnectionD did not open successfully.")
         End If
-
-
         pgConnectionD.Close()
-
-
-
-
-
     End Sub
 
     Private Sub save_settings_btn_Click(sender As Object, e As EventArgs) Handles save_settings_btn.Click
@@ -421,62 +373,35 @@ Public Class MAIN
             My.Settings.partner_id = partner_id_txt.Text.ToString
             My.Settings.debug = debug.Checked.ToString
             My.Settings.admin_pass = admin_pass_txt.Text
-
-
-
-            ' My.Settings.xls_file_txt = xls_file_txt.Text.ToString
-            ' My.Settings.xls_sales_file_txt = xls_sales_file_txt.Text.ToString
             My.Settings.Save()
         Catch ex As Exception
-
             MessageBox.Show(ex.Message)
-            '  MsgBox("Οι ρυθμισεις δεν αποθηκευτηκαν.", MsgBoxStyle.OkOnly)
         End Try
         MsgBox("Οι ρυθμισεις αποθηκευτηκαν.", MsgBoxStyle.OkOnly) ' context.Response.Write("pgConnection did not open successfully.")
-
-
     End Sub
     Private Sub export_btn_Click(sender As Object, e As EventArgs) Handles export_btn.Click
-
-
-        ' Dim q = context.Request.QueryString("q")
 
         Dim pgConnection As NpgsqlConnection = New NpgsqlConnection
         Dim pgCommand As NpgsqlCommand = New NpgsqlCommand
         Dim pgConnectionString As String
         Dim sda As NpgsqlDataAdapter
-
-
         ds = New DataSet
-
-        ' pgConnectionString = con_string1.Text '"Server=192.168.1.147;Port=5432;Userid=sotav;Database=LOUMIDIS;password=2772398;Protocol=3;SSL=false;Pooling=true;MinPoolSize=1;MaxPoolSize=20;Encoding=UNICODE;Timeout=15;SslMode=Disable"
-        ' pgConnection.ConnectionString = pgConnectionString
-        ' pgConnection.Open()
-
         Try
-            pgConnectionString = con_string1.Text '"Server=192.168.1.147;Port=5432;Userid=odoo8;Database=LOUMIDIS;password=2772398;Protocol=3;SSL=false;Pooling=true;MinPoolSize=1;MaxPoolSize=20;Encoding=UNICODE;Timeout=15;SslMode=Disable" '
+            pgConnectionString = con_string1.Text
             pgConnection.ConnectionString = pgConnectionString
             pgConnection.Open()
         Catch ex As Exception
             If pgConnection.State <> ConnectionState.Open Then
-                pgConnectionString = con_string2.Text '"Server=192.168.1.147;Port=5432;Userid=odoo8;Database=LOUMIDIS;password=2772398;Protocol=3;SSL=false;Pooling=true;MinPoolSize=1;MaxPoolSize=20;Encoding=UNICODE;Timeout=15;SslMode=Disable" '
+                pgConnectionString = con_string2.Text
                 pgConnection.ConnectionString = pgConnectionString
                 pgConnection.Open()
             Else
 
             End If
         End Try
-
-
-
-
         If pgConnection.FullState = ConnectionState.Open Then
-
             pgCommand.Connection = pgConnection
             pgCommand.CommandType = CommandType.Text
-
-            ' pgCommand.CommandText = q1.Text '"SELECT * FROM pos_orders;"
-
             pgCommand.CommandText = " SELECT  " & _
                   "  product_product.default_code AS ΚΩΔΙΚΟΣ," & _
                   "  Sum(public.pos_order_line.qty) AS ΠΟΣΟΤΗΤΑ, " & _
@@ -507,49 +432,17 @@ Public Class MAIN
                   "  ORDER BY  " & _
                   "  public.product_product.default_code ASC "
 
-            ' Else
-            '     MsgBox("pgConnection did not open successfully.") ' context.Response.Write("pgConnection did not open successfully.")
-            ' End If
-            '
-            '            pgConnection1.Close()
-            '
-
 
             sda = New NpgsqlDataAdapter(pgCommand)
             sda.Fill(ds)
-
-
-            '    context.Response.Write("<table>")
-            '  Dim dr As DataRow
             Dim dt As DataTable
             dt = ds.Tables(0)
-            ' dgv1.DataSource = dt
-            '    C1TrueDBGrid1.DataSource = dt
-            ' pgc1.DataSource = dt
-            ' pgc1.RetrieveFields()
-            ' pgc1.ResumeLayout()
             dgv1.DataSource = dt
             dgv1.Refresh()
-            ' pgc1.DataSource = dt
-            ' pgc1.RetrieveFields()
-            ' pgc1.Refresh()
-
-
-
-
             Dim MyFile1 As New StreamWriter(file_save_path.Text & DateTime.Now.ToString("ddMMyyyy") & "_POS.txt") '("C:\akronis\LMD_ADV_BRI_ODOO\LC_DATA\MyFile.txt")
             Dim MyFile2 As New StreamWriter(file_save_path1.Text & DateTime.Now.ToString("ddMMyyyy") & "_POS_TMP" & ".txt") '"C:\akronis\LMD_ADV_BRI_ODOO\LC_DATA\MyFile2.txt")
             Dim MyFile3 As New StreamWriter(file_save_path2.Text & DateTime.Now.ToString("ddMMyyyy_hhmmss") & "_data_BCK" & ".txt") '"C:\akronis\LMD_ADV_BRI_ODOO\LC_DATA\MyFile2.txt")
-
-            'Dim MyFile1 As New StreamWriter(file_save_path.Text & DateTime.Now.ToString("ddMMyyyy") & "_POS.txt") '("C:\akronis\LMD_ADV_BRI_ODOO\LC_DATA\MyFile.txt")
-            ' Dim MyFile2 As New StreamWriter("\\192.168.1.30\public\~~KATASTIMATA~~\OMONOIA\CLOSING_POS\" & DateTime.Now.ToString("ddMMyyyy") & "_POS" & ".txt") '"C:\akronis\LMD_ADV_BRI_ODOO\LC_DATA\MyFile2.txt")
-            'Dim MyFile3 As New StreamWriter("\\192.168.1.30\public\~~KATASTIMATA~~\OMONOIA\CLOSING_POS\" & DateTime.Now.ToString("ddMMyyyy_hhmmss") & "_data_BCK" & ".txt") '"C:\akronis\LMD_ADV_BRI_ODOO\LC_DATA\MyFile2.txt")
-
-
             For i = 0 To dgv1.Rows.Count - 1
-
-
-
 
                 'item1, "01" apla kodikos / 3
                 'item2, imera / 9
@@ -624,10 +517,6 @@ Public Class MAIN
                 MyFile1.WriteLine(ToLen(item1, 3) & ToLen(item2, 9) & ToLen(item3, 17) & ToLen(item4, 9) & ToLen(item5, 11) & ToLen(item6, 11) & ToLen(item7, 8))
                 MyFile2.WriteLine(ToLen(item1, 3) & ToLen(item2, 9) & ToLen(item3, 17) & ToLen(item4, 9) & ToLen(item5, 11) & ToLen(item6, 11) & ToLen(item7, 8))
 
-                'Next
-
-
-
                 ' For r = 0 To 25
                 MyFile3.Write(ToLen_edi(item1, 3))
                 MyFile3.Write(ToLen_edi(item2, 9))
@@ -636,27 +525,15 @@ Public Class MAIN
                 MyFile3.Write(ToLen_edi(item5, 11))
                 MyFile3.Write(ToLen_edi(item6, 11))
                 MyFile3.WriteLine(ToLen_edi(item7, 8))
-                'Next
                 ' loop through records
-
-
-
             Next
             MyFile1.Close()
             MyFile2.Close()
             MyFile3.Close()
-
-
-
-
-
-
-
-
             ds.Dispose()
-            ' context.Response.Write("</table>")
+
         Else
-            MsgBox("pgConnection did not open successfully.") ' context.Response.Write("pgConnection did not open successfully.")
+            MsgBox("pgConnection did not open successfully.")
         End If
 
         pgConnection.Close()
@@ -700,12 +577,12 @@ Public Class MAIN
 
 
         Try
-            pgConnectionString = con_string1.Text '"Server=192.168.1.147;Port=5432;Userid=odoo8;Database=LOUMIDIS;password=2772398;Protocol=3;SSL=false;Pooling=true;MinPoolSize=1;MaxPoolSize=20;Encoding=UNICODE;Timeout=15;SslMode=Disable" '
+            pgConnectionString = con_string1.Text
             pgConnection.ConnectionString = pgConnectionString
             pgConnection.Open()
         Catch ex As Exception
             If pgConnection.State <> ConnectionState.Open Then
-                pgConnectionString = con_string2.Text '"Server=192.168.1.147;Port=5432;Userid=odoo8;Database=LOUMIDIS;password=2772398;Protocol=3;SSL=false;Pooling=true;MinPoolSize=1;MaxPoolSize=20;Encoding=UNICODE;Timeout=15;SslMode=Disable" '
+                pgConnectionString = con_string2.Text
                 pgConnection.ConnectionString = pgConnectionString
                 pgConnection.Open()
             Else
@@ -767,12 +644,12 @@ Public Class MAIN
         Dim sda As NpgsqlDataAdapter
         ds = New DataSet
         Try
-            pgConnectionString = con_string1.Text '"Server=192.168.1.147;Port=5432;Userid=odoo8;Database=LOUMIDIS;password=2772398;Protocol=3;SSL=false;Pooling=true;MinPoolSize=1;MaxPoolSize=20;Encoding=UNICODE;Timeout=15;SslMode=Disable" '
+            pgConnectionString = con_string1.Text
             pgConnection.ConnectionString = pgConnectionString
             pgConnection.Open()
         Catch ex As Exception
             If pgConnection.State <> ConnectionState.Open Then
-                pgConnectionString = con_string2.Text '"Server=192.168.1.147;Port=5432;Userid=odoo8;Database=LOUMIDIS;password=2772398;Protocol=3;SSL=false;Pooling=true;MinPoolSize=1;MaxPoolSize=20;Encoding=UNICODE;Timeout=15;SslMode=Disable" '
+                pgConnectionString = con_string2.Text
                 pgConnection.ConnectionString = pgConnectionString
                 pgConnection.Open()
             Else
@@ -886,7 +763,7 @@ Public Class MAIN
             dgv_com1.Refresh()
             ds.Dispose()
         Else
-            MsgBox("pgConnection did not open successfully.") ' context.Response.Write("pgConnection did not open successfully.")
+            MsgBox("pgConnection did not open successfully.")
         End If
 
         pgConnection.Close()
@@ -896,28 +773,18 @@ Public Class MAIN
 
     Private Sub test_button_Click(sender As Object, e As EventArgs) Handles test_button.Click
 
-
-        ' Dim q = context.Request.QueryString("q")
-
         Dim pgConnection As NpgsqlConnection = New NpgsqlConnection
         Dim pgCommand As NpgsqlCommand = New NpgsqlCommand
         Dim pgConnectionString As String
         Dim sda As NpgsqlDataAdapter
-
-
         ds = New DataSet
-
-        ' pgConnectionString = con_string1.Text '"Server=192.168.1.147;Port=5432;Userid=sotav;Database=LOUMIDIS;password=2772398;Protocol=3;SSL=false;Pooling=true;MinPoolSize=1;MaxPoolSize=20;Encoding=UNICODE;Timeout=15;SslMode=Disable"
-        ' pgConnection.ConnectionString = pgConnectionString
-        ' pgConnection.Open()
-
         Try
-            pgConnectionString = con_string1.Text '"Server=192.168.1.147;Port=5432;Userid=odoo8;Database=LOUMIDIS;password=2772398;Protocol=3;SSL=false;Pooling=true;MinPoolSize=1;MaxPoolSize=20;Encoding=UNICODE;Timeout=15;SslMode=Disable" '
+            pgConnectionString = con_string1.Text
             pgConnection.ConnectionString = pgConnectionString
             pgConnection.Open()
         Catch ex As Exception
             If pgConnection.State <> ConnectionState.Open Then
-                pgConnectionString = con_string2.Text '"Server=192.168.1.147;Port=5432;Userid=odoo8;Database=LOUMIDIS;password=2772398;Protocol=3;SSL=false;Pooling=true;MinPoolSize=1;MaxPoolSize=20;Encoding=UNICODE;Timeout=15;SslMode=Disable" '
+                pgConnectionString = con_string2.Text
                 pgConnection.ConnectionString = pgConnectionString
                 pgConnection.Open()
             Else
@@ -925,15 +792,12 @@ Public Class MAIN
             End If
         End Try
 
-
-
-
         If pgConnection.FullState = ConnectionState.Open Then
 
             pgCommand.Connection = pgConnection
             pgCommand.CommandType = CommandType.Text
 
-            ' pgCommand.CommandText = q1.Text '"SELECT * FROM pos_orders;"
+
 
             pgCommand.CommandText = " SELECT  " & _
                   "  product_product.default_code AS ΚΩΔΙΚΟΣ," & _
@@ -994,8 +858,8 @@ Public Class MAIN
                 Dim item1, item2, item3, item4, item5, item6, item7 As String
 
 
-                item1 = "01" 'dgv1.Rows(i).Cells(0).Value.ToString
-                item2 = DateTime.Now.ToString("dd/MM/yy") '(Now.Date.ToShortDateString) 'dgv1.Rows(i).Cells(1).Value.ToString
+                item1 = "01"
+                item2 = DateTime.Now.ToString("dd/MM/yy")
                 item3 = dgv1.Rows(i).Cells(0).Value.ToString
 
 
@@ -1055,12 +919,6 @@ Public Class MAIN
                 ' loop through records
                 MyFile1.WriteLine(ToLen(item1, 3) & ToLen(item2, 9) & ToLen(item3, 17) & ToLen(item4, 9) & ToLen(item5, 11) & ToLen(item6, 11) & ToLen(item7, 8))
                 MyFile2.WriteLine(ToLen(item1, 3) & ToLen(item2, 9) & ToLen(item3, 17) & ToLen(item4, 9) & ToLen(item5, 11) & ToLen(item6, 11) & ToLen(item7, 8))
-
-                'Next
-
-
-
-                ' For r = 0 To 25
                 MyFile3.Write(ToLen_edi(item1, 3))
                 MyFile3.Write(ToLen_edi(item2, 9))
                 MyFile3.Write(ToLen_edi(item3, 17))
@@ -1068,10 +926,6 @@ Public Class MAIN
                 MyFile3.Write(ToLen_edi(item5, 11))
                 MyFile3.Write(ToLen_edi(item6, 11))
                 MyFile3.WriteLine(ToLen_edi(item7, 8))
-                'Next
-                ' loop through records
-
-
 
             Next
             MyFile1.Close()
@@ -1080,7 +934,7 @@ Public Class MAIN
             ds.Dispose()
             ' context.Response.Write("</table>")
         Else
-            MsgBox("pgConnection did not open successfully.") ' context.Response.Write("pgConnection did not open successfully.")
+            MsgBox("pgConnection did not open successfully.")
         End If
 
         pgConnection.Close()
@@ -1088,34 +942,9 @@ Public Class MAIN
 
     End Sub
     Private Sub dgv_sel_invoices_CurrentCellDirtyStateChanged(sender As Object, e As EventArgs) Handles dgv_sel_invoices.CurrentCellDirtyStateChanged
-        ' Private Sub DataGridView1SelectAll_CurrentCellDirtyStateChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DataGridView1.CurrentCellDirtyStateChanged
-
+      
         RemoveHandler dgv_sel_invoices.CurrentCellDirtyStateChanged,
             AddressOf dgv_sel_invoices_CurrentCellDirtyStateChanged
-
-
-
-
-
-        '  Dim str As New List(Of String)
-        '  For Each row As DataGridViewRow In dgvM.Rows
-        ' If Not row.IsNewRow Then
-        ' Str.Add("'" & row.Cells(1).Value & "'")
-        '
-        '        End If
-        '        Next
-        '        If Str.Count > 0 Then
-        ' Dim strRes = String.Join(",", Str.ToArray)
-        ' 'MsgBox(strRes)
-        ' list_text.Text = strRes
-        ' End If
-
-
-
-
-
-
-
         If TypeOf dgv_sel_invoices.CurrentCell Is DataGridViewCheckBoxCell Then
             dgv_sel_invoices.EndEdit()
             Dim Checked As Boolean = CType(dgv_sel_invoices.CurrentCell.Value, Boolean)
@@ -1134,26 +963,24 @@ Public Class MAIN
         Dim Data As New List(Of String)
         list_text.Text = ""
         For Each r As DataGridViewRow In dgvM.Rows
-            ' If r.Cells(0).Value IsNot Nothing Then
+
 
             Dim Checked As Boolean = CType(r.Cells(0).Value, Boolean)
             If Checked Then
-                'MsgBox(r.Cells(1).Value.ToString)
+
                 Data.Add("'" & r.Cells(1).Value & "'")
-                'ListBox1.Items.Add(r.Cells(1).Value.ToString)
+
             Else
                 Data.Remove("'" & r.Cells(1).Value & "'")
-                'ListBox1.Items.Remove(r.Cells(1).Value.ToString)
+
             End If
 
-            'Data.Add(r.Cells(0).Value.ToString().Split(","c))
-            ' Data.Add(r.Cells(1).Value)
-            ' End If
+
         Next
 
         If Data.Count > 0 Then
             Dim strRes = String.Join(",", Data.ToArray)
-            'MsgBox(strRes)
+
             list_text.Text = strRes
             getdata_lines()
         End If
@@ -1171,7 +998,7 @@ Public Class MAIN
             Dim Checked As Boolean = CType(dgvM.CurrentCell.Value, Boolean)
             If Checked Then
                 ListBox1.Items.Add(dgvM.CurrentRow.Cells(1).Value.ToString)
-                'str.Add("'" & dgvM.CurrentRow.Cells(1).Value & "'")
+
             Else
                 ListBox1.Items.Remove(dgvM.CurrentRow.Cells(1).Value.ToString)
             End If
@@ -1234,7 +1061,7 @@ Public Class MAIN
 
 
         For Each r As DataGridViewRow In dgvM.Rows
-            ' If r.Cells(0).Value IsNot Nothing Then
+
             ListBox1.Items.Clear()
             Dim Checked As Boolean = CType(r.Cells(0).Value, Boolean)
             If Checked Then
@@ -1248,12 +1075,6 @@ Public Class MAIN
 
                     Dim MyFile1 As New StreamWriter(file_save_path.Text & "Invoice_H_" & DateTime.Now.ToString("yyyyMMdd_") & r.Cells(1).Value.ToString & ".txt") '("C:\akronis\LMD_ADV_BRI_ODOO\LC_DATA\MyFile.txt")
                     Dim MyFile1_comma As New StreamWriter(file_save_path2.Text & "Invoice_H_" & DateTime.Now.ToString("yyyyMMdd_") & r.Cells(1).Value.ToString & ".csv") '("C:\akronis\LMD_ADV_BRI_ODOO\LC_DATA\MyFile.txt")
-
-                    ' Dim MyFile2 As New StreamWriter(file_save_path.Text & DateTime.Now.ToString("ddMMyyyy") & "_POS_TMP" & ".txt") '"C:\akronis\LMD_ADV_BRI_ODOO\LC_DATA\MyFile2.txt")
-                    ' 
-
-
-
                     Dim item1, item2, item3, item4, item5, item6, item7, item8, item9, item10 As String
                     Dim item11, item12, item13, item14, item15, item16, item17, item18, item19, item20 As String
                     Dim item21, item22, item23, item24, item25, item26, item27, item28, item29, item30 As String
@@ -1443,17 +1264,6 @@ Public Class MAIN
 
                     Dim litem1, litem2, litem3, litem4, litem5, litem6, litem7, litem8, litem9, litem10 As String
                     Dim litem11, litem12, litem13, litem14, litem15, litem16, litem17, litem18 As String
-
-
-                    'For Each rl As DataGridViewRow In dgvM.Rows
-
-
-
-
-
-
-
-
                     Dim MyFile2 As New StreamWriter(file_save_path1.Text & "Invoice_L_" & DateTime.Now.ToString("yyyyMMdd_") & r.Cells(1).Value.ToString & ".txt") '"C:\akronis\LMD_ADV_BRI_ODOO\LC_DATA\MyFile2.txt")
                     Dim MyFile2_comma As New StreamWriter(file_save_path2.Text & "Invoice_L_" & DateTime.Now.ToString("yyyyMMdd_") & r.Cells(1).Value.ToString & ".csv") '"C:\akronis\LMD_ADV_BRI_ODOO\LC_DATA\MyFile2.txt")
 
@@ -1562,18 +1372,10 @@ Public Class MAIN
                             ListBox1.Items.Clear()
                         Next
                     Catch ex As Exception
-
                     End Try
-
                     MyFile2.Close()
                     MyFile2_comma.Close()
-
-                    ' Next
-
-
-
                 Else
-
                 End If
                 MyFile3.Close()
             End If
@@ -1586,17 +1388,11 @@ Public Class MAIN
     Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
         unlock_settings.Show()
         Me.Close()
-
-
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles settings_access.Click
         unlock_settings.Show()
         Me.Close()
-    End Sub
-
-    Private Sub con_string1_TextChanged(sender As Object, e As EventArgs) Handles con_string1.TextChanged
-
     End Sub
 
     Private Sub admin_pass_txt_MouseHover(sender As Object, e As EventArgs) Handles admin_pass_txt.MouseHover
@@ -1607,11 +1403,4 @@ Public Class MAIN
         admin_pass_txt.PasswordChar = "*"
     End Sub
 
-    Private Sub admin_pass_txt_MouseUp(sender As Object, e As MouseEventArgs) Handles admin_pass_txt.MouseUp
-
-    End Sub
-
-    Private Sub admin_pass_txt_TextChanged(sender As Object, e As EventArgs) Handles admin_pass_txt.TextChanged
-
-    End Sub
 End Class
