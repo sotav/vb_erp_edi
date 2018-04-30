@@ -14,35 +14,18 @@
         If UsernameTextBox.Text = "user" And PasswordTextBox.Text = "1" Then
 
             MAIN.TabControl1.TabPages.RemoveByKey("TabPage2")
-
-            ' MAIN.TabControl1.TabPages.RemoveByKey("TabPage1")
-            ' MAIN.TabControl1.TabPages.RemoveByKey("TabPage2")
-            ' MAIN.TabControl1.TabPages.RemoveByKey("TabPage4")
-            ' MAIN.TabControl1.TabPages.RemoveByKey("discount_amount_cost_price")
-            ' MAIN.TabControl1.TabPages.RemoveByKey("tropos_pliromis")
-            ' 'MAIN.TabControl1.TabPages.RemoveAt(1)
-            ' ' MAIN.TabControl1.TabPages.RemoveAt(2)
-            ' MAIN.StartPosition = FormStartPosition.CenterScreen
-            ' MAIN.WindowState = FormWindowState.Maximized
-            '
             MAIN.settings_access.Visible = True
 
             MAIN.Show()
-        ElseIf UsernameTextBox.Text = "useradmin" And PasswordTextBox.Text = "userroot" Then
+        ElseIf UsernameTextBox.Text = "useradmin" And PasswordTextBox.Text = "1" Then
             MAIN.TabControl1.TabPages.RemoveByKey("TabPage2")
-            '           MAIN.WindowState = FormWindowState.Maximized
-            '
             MAIN.Show()
             '
-        ElseIf UsernameTextBox.Text = "sotav" And PasswordTextBox.Text = "2102772398Tav" Then
+        ElseIf UsernameTextBox.Text = "sotav" And PasswordTextBox.Text = "1" Then
             '           MAIN.Show()
         ElseIf UsernameTextBox.Text = "admin" And PasswordTextBox.Text = MAIN.admin_pass_txt.Text Then
             MAIN.Show()
         ElseIf UsernameTextBox.Text = " " And PasswordTextBox.Text = " " Then
-            '          MAIN.TabControl1.TabPages.RemoveByKey("TabPage2")
-            '          'MAIN.TabControl1.TabPages.RemoveByKey("TabPage4")
-            '          ' MAIN.WindowState = FormWindowState.Maximized
-            '          MAIN.Show()
             MsgBox("Συγγνωμη αλλα ο κωδικος σας ή το ονομα χρηστη δεν εχουν οριστει", MsgBoxStyle.OkOnly, "Invalid")
 
         Else

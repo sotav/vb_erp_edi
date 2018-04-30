@@ -15,10 +15,10 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="user_id" Type="System.String" Scope="User">
-      <Value Profile="(Default)">'drtire'</Value>
+      <Value Profile="(Default)">'user'</Value>
     </Setting>
     <Setting Name="con_string2" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Server=212.24.101.88;Port=5432;Userid=odoo;Database=dr-tire-test;password=drt1r3p@$$;Pooling=true;MinPoolSize=1;MaxPoolSize=20;Timeout=15;SslMode=Disable</Value>
+      <Value Profile="(Default)">Server=server_ip;Port=5432;Userid=user_name;Database=db_db;password=db_pass$;Pooling=true;MinPoolSize=1;MaxPoolSize=20;Timeout=15;SslMode=Disable</Value>
     </Setting>
     <Setting Name="company_id" Type="System.String" Scope="User">
       <Value Profile="(Default)">'1','2','3','4','5','6'</Value>
@@ -30,10 +30,10 @@
       <Value Profile="(Default)">'1'</Value>
     </Setting>
     <Setting Name="con_string1" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Server=212.24.101.88;Port=5432;Userid=odoo;Database=dr-tire-test;password=drt1r3p@$$;Pooling=true;MinPoolSize=1;MaxPoolSize=20;Timeout=15;SslMode=Disable</Value>
+      <Value Profile="(Default)">Server=server_ip;Port=5432;Userid=user_name;Database=db_db;password=db_pass$;Pooling=true;MinPoolSize=1;MaxPoolSize=20;Timeout=15;SslMode=Disable</Value>
     </Setting>
     <Setting Name="admin_pass" Type="System.String" Scope="User">
-      <Value Profile="(Default)">lion25025code</Value>
+      <Value Profile="(Default)">pass</Value>
     </Setting>
   </Settings>
 </SettingsFile>

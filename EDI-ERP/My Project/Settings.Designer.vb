@@ -104,7 +104,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("'drtire'")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("'user'")>  _
         Public Property user_id() As String
             Get
                 Return CType(Me("user_id"),String)
@@ -116,8 +116,8 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Server=212.24.101.88;Port=5432;Userid=odoo;Database=dr-tire-test;password=drt1r3p"& _ 
-            "@$$;Pooling=true;MinPoolSize=1;MaxPoolSize=20;Timeout=15;SslMode=Disable")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Server=server_ip;Port=5432;Userid=user_name;Database=db_db;password=db_pass$;Pool"& _ 
+            "ing=true;MinPoolSize=1;MaxPoolSize=20;Timeout=15;SslMode=Disable")>  _
         Public Property con_string2() As String
             Get
                 Return CType(Me("con_string2"),String)
@@ -165,8 +165,8 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Server=212.24.101.88;Port=5432;Userid=odoo;Database=dr-tire-test;password=drt1r3p"& _ 
-            "@$$;Pooling=true;MinPoolSize=1;MaxPoolSize=20;Timeout=15;SslMode=Disable")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Server=server_ip;Port=5432;Userid=user_name;Database=db_db;password=db_pass$;Pool"& _ 
+            "ing=true;MinPoolSize=1;MaxPoolSize=20;Timeout=15;SslMode=Disable")>  _
         Public Property con_string1() As String
             Get
                 Return CType(Me("con_string1"),String)
@@ -178,7 +178,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("lion25025code")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("pass")>  _
         Public Property admin_pass() As String
             Get
                 Return CType(Me("admin_pass"),String)

@@ -49,6 +49,8 @@ Partial Class MAIN
         Me.dtp1 = New System.Windows.Forms.DateTimePicker()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.admin_pass_txt = New System.Windows.Forms.TextBox()
         Me.debug = New System.Windows.Forms.CheckBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.invoice_ids = New System.Windows.Forms.TextBox()
@@ -74,8 +76,6 @@ Partial Class MAIN
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.admin_pass_txt = New System.Windows.Forms.TextBox()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -380,6 +380,26 @@ Partial Class MAIN
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(14, 336)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(114, 13)
+        Me.Label10.TabIndex = 27
+        Me.Label10.Text = "ΚΩΔΙΚΟΣ ΔΙΑΧΕΙΡΙΣΤΗ"
+        '
+        'admin_pass_txt
+        '
+        Me.admin_pass_txt.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.admin_pass_txt.Location = New System.Drawing.Point(132, 333)
+        Me.admin_pass_txt.Name = "admin_pass_txt"
+        Me.admin_pass_txt.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.admin_pass_txt.Size = New System.Drawing.Size(235, 20)
+        Me.admin_pass_txt.TabIndex = 26
+        Me.admin_pass_txt.Text = "pass"
+        '
         'debug
         '
         Me.debug.AutoSize = True
@@ -551,7 +571,7 @@ Partial Class MAIN
         Me.partner_afm_txt.Name = "partner_afm_txt"
         Me.partner_afm_txt.Size = New System.Drawing.Size(234, 20)
         Me.partner_afm_txt.TabIndex = 8
-        Me.partner_afm_txt.Text = "'0704740','0704741'"
+        Me.partner_afm_txt.Text = "'000000001','00000002'"
         '
         'con_string2
         '
@@ -561,9 +581,8 @@ Partial Class MAIN
         Me.con_string2.Name = "con_string2"
         Me.con_string2.Size = New System.Drawing.Size(618, 20)
         Me.con_string2.TabIndex = 7
-        Me.con_string2.Text = "Server=database_server;Port=5432;Userid=database_user;Database=database_name;pass" & _
-    "word=database_password;Pooling=true;MinPoolSize=1;MaxPoolSize=20;Timeout=15;SslM" & _
-    "ode=Disable" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.con_string2.Text = "Server=server_ip;Port=5432;Userid=user_name;Database=db_db;password=db_pass$;Pool" & _
+    "ing=true;MinPoolSize=1;MaxPoolSize=20;Timeout=15;SslMode=Disable"
         '
         'connection_label2
         '
@@ -591,9 +610,8 @@ Partial Class MAIN
         Me.con_string1.Name = "con_string1"
         Me.con_string1.Size = New System.Drawing.Size(618, 20)
         Me.con_string1.TabIndex = 0
-        Me.con_string1.Text = "Server=database_server;Port=5432;Userid=database_user;Database=database_name;pass" & _
-    "word=database_password;Pooling=true;MinPoolSize=1;MaxPoolSize=20;Timeout=15;SslM" & _
-    "ode=Disable"
+        Me.con_string1.Text = "Server=server_ip;Port=5432;Userid=user_name;Database=db_db;password=db_pass$;Pool" & _
+    "ing=true;MinPoolSize=1;MaxPoolSize=20;Timeout=15;SslMode=Disable"
         '
         'TabControl1
         '
@@ -627,26 +645,6 @@ Partial Class MAIN
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "ΡΥΘΜΙΣΕΙΣ"
         Me.TabPage2.UseVisualStyleBackColor = True
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(14, 336)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(114, 13)
-        Me.Label10.TabIndex = 27
-        Me.Label10.Text = "ΚΩΔΙΚΟΣ ΔΙΑΧΕΙΡΙΣΤΗ"
-        '
-        'admin_pass_txt
-        '
-        Me.admin_pass_txt.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.admin_pass_txt.Location = New System.Drawing.Point(132, 333)
-        Me.admin_pass_txt.Name = "admin_pass_txt"
-        Me.admin_pass_txt.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.admin_pass_txt.Size = New System.Drawing.Size(235, 20)
-        Me.admin_pass_txt.TabIndex = 26
-        Me.admin_pass_txt.Text = "lion25025code"
         '
         'MAIN
         '
